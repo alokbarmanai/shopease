@@ -18,6 +18,17 @@ app.get('/api/health', (req, res) => {
     res.json({ status: 'ok' });
 });
 
+// NEW: API routes
+app.use('/api/auth', require('./routes/auth'));
+
+// NEW: Error handler – turns any error into { "error": "..." } (ARCHITECTURE.md §3).
+// Must be registered AFTER all routes.
+app.use((err, req, res, next) => {
+    const status = err.status || 500;
+    if (status === 500) console.error(err);
+    res.status(status).json({ error: status === 500 ? 'Something went wrong' : err.message });
+});
+
 app.listen(PORT, () => {
     console.log(`ShopEase running at http://localhost:${PORT}`);
 });
