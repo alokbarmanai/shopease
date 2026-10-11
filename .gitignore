@@ -1,0 +1,23 @@
+# Dependencies (re-downloaded with npm install)
+node_modules/
+
+# Playwright output (generated on every test run)
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
