@@ -11,3 +11,4 @@ A demo online store used to learn production-style test automation.
 
 ## Documents
 - [Business Requirements (BRD)](docs/BRD.md)
+- [Architecture Overview](docs/ARCHITECTURE.md)
