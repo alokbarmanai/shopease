@@ -24,6 +24,11 @@ app.use('/api/products', require('./routes/products'));
 app.use('/api/cart', require('./routes/cart'));
 app.use('/api/orders', require('./routes/orders'));
 
+// Test-only routes – registered ONLY when not running in production.
+if (process.env.NODE_ENV !== 'production') {
+    app.use('/api/test', require('./routes/testSupport'));
+}
+
 // NEW: Error handler – turns any error into { "error": "..." } (ARCHITECTURE.md §3).
 // Must be registered AFTER all routes.
 app.use((err, req, res, next) => {
