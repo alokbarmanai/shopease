@@ -200,3 +200,15 @@ td {
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 16px;
 }
+
+
+/* ---------- Login page ---------- */
+.login-page {
+    max-width: 380px;
+    margin-top: 80px;
+}
+
+.login-page button[type="submit"] {
+    width: 100%;
+    margin-top: 8px;
+}

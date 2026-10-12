@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login – ShopEase</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <main class="login-page">
+        <div class="card">
+            <h1>ShopEase</h1>
+            <p class="muted">Sign in to start shopping</p>
+
+            <div class="message error" role="alert" data-testid="login-error" hidden></div>
+
+            <form id="login-form" novalidate>
+                <label>
+                    Username
+                    <input type="text" name="username" autocomplete="username" data-testid="username-input">
+                </label>
+
+                <label>
+                    Password
+                    <input type="password" name="password" autocomplete="current-password" data-testid="password-input">
+                </label>
+
+                <button type="submit" data-testid="login-button">Login</button>
+            </form>
+        </div>
+    </main>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/login.js"></script>
+</body>
+
+</html>
