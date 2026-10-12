@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products – ShopEase</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <header id="app-header"></header>
+
+    <main>
+        <h1>Products</h1>
+
+        <div class="message" role="status" data-testid="page-message" hidden></div>
+
+        <div class="toolbar">
+            <input type="search" placeholder="Search products..." aria-label="Search products"
+                data-testid="search-input">
+            <select aria-label="Category" data-testid="category-filter">
+                <option value="">All categories</option>
+            </select>
+        </div>
+
+        <p class="muted" data-testid="no-products" hidden>No products found.</p>
+        <div class="product-grid" data-testid="product-grid"></div>
+    </main>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/layout.js"></script>
+    <script src="/js/products.js"></script>
+</body>
+
+</html>
