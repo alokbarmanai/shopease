@@ -134,4 +134,17 @@ function removeCoupon(username) {
     return getCart(username);
 }
 
-module.exports = { getCart, addItem, updateQuantity, removeItem, applyCoupon, removeCoupon };
+// Empty the cart after an order is placed (BR-06).
+function clearCart(username) {
+    getData().carts[username] = { items: [], couponCode: null };
+}
+
+module.exports = {
+    getCart,
+    addItem,
+    updateQuantity,
+    removeItem,
+    applyCoupon,
+    removeCoupon,
+    clearCart,
+};
