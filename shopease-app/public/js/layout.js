@@ -47,3 +47,17 @@ async function logout() {
         window.location.href = '/index.html';
     }
 }
+
+
+// Page message box (success / error) for pages that have
+// <div data-testid="page-message">.
+function showMessage(type, text) {
+    const box = document.querySelector('[data-testid="page-message"]');
+    box.className = `message ${type}`;
+    box.textContent = text;
+    box.hidden = false;
+}
+
+function hideMessage() {
+    document.querySelector('[data-testid="page-message"]').hidden = true;
+}

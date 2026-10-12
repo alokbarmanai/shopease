@@ -86,10 +86,3 @@ async function addToCart(product) {
         showMessage('error', error.message);
     }
 }
-
-function showMessage(type, text) {
-    const box = document.querySelector('[data-testid="page-message"]');
-    box.className = `message ${type}`;
-    box.textContent = text;
-    box.hidden = false;
-}
