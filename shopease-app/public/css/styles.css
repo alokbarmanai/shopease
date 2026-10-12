@@ -241,3 +241,67 @@ td {
     content: " *";
     color: var(--color-error);
 }
+
+
+/* ---------- Cart page ---------- */
+.cart-layout {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 24px;
+    align-items: start;
+}
+
+.cart-layout table input {
+    width: 70px;
+    margin-top: 0;
+}
+
+.cart-summary h2 {
+    margin-top: 0;
+    font-size: 1.1rem;
+}
+
+.inline {
+    display: flex;
+    gap: 8px;
+}
+
+.inline input {
+    margin-top: 0;
+}
+
+.summary {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+    margin: 16px 0;
+}
+
+.summary dt,
+.summary dd {
+    margin: 0;
+}
+
+.summary dd {
+    text-align: right;
+}
+
+.summary .total {
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding-top: 8px;
+    border-top: 1px solid var(--color-border);
+}
+
+.full-width {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+/* On narrow screens, put the summary below the table */
+@media (max-width: 720px) {
+    .cart-layout {
+        grid-template-columns: 1fr;
+    }
+}
