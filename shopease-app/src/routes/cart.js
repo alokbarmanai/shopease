@@ -31,4 +31,15 @@ router.delete('/items/:productId', (req, res) => {
     res.json(cart.removeItem(req.username, req.params.productId));
 });
 
+// POST /api/cart/coupon   body: { "code": "SAVE10" }
+router.post('/coupon', (req, res) => {
+    const { code } = req.body || {};
+    res.json(cart.applyCoupon(req.username, code));
+});
+
+// DELETE /api/cart/coupon
+router.delete('/coupon', (req, res) => {
+    res.json(cart.removeCoupon(req.username));
+});
+
 module.exports = router;

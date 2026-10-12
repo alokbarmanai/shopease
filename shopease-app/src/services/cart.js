@@ -96,5 +96,42 @@ function getCart(username) {
         ...calculateTotals(items, coupon),
     };
 }
+// BR-04: apply one coupon to the cart (RULE-04, RULE-05, BRD §7.1).
+function applyCoupon(username, code) {
+    const cart = getOrCreateCart(username);
 
-module.exports = { getCart, addItem, updateQuantity, removeItem };
+    if (cart.items.length === 0) {
+        throw new AppError(400, 'Cart is empty');
+    }
+    if (cart.couponCode) {
+        throw new AppError(400, 'Only one coupon can be applied per order'); // RULE-04
+    }
+
+    // RULE-05: not case-sensitive (codes are stored in upper case).
+    const normalizedCode = String(code || '').trim().toUpperCase();
+    const coupon = getData().coupons.find((c) => c.code === normalizedCode);
+
+    if (!coupon) {
+        throw new AppError(400, 'Invalid coupon code');
+    }
+    if (!coupon.active) {
+        throw new AppError(400, 'This coupon has expired');
+    }
+
+    const { subtotalCents } = getCart(username);
+    if (subtotalCents < coupon.minSubtotalCents) {
+        const minimum = (coupon.minSubtotalCents / 100).toFixed(2);
+        throw new AppError(400, `This coupon requires a subtotal of at least $${minimum}`);
+    }
+
+    cart.couponCode = coupon.code;
+    return getCart(username);
+}
+
+// BR-04: remove the applied coupon.
+function removeCoupon(username) {
+    getOrCreateCart(username).couponCode = null;
+    return getCart(username);
+}
+
+module.exports = { getCart, addItem, updateQuantity, removeItem, applyCoupon, removeCoupon };
