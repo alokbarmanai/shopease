@@ -235,3 +235,9 @@ td {
     color: var(--color-error);
     font-weight: 600;
 }
+
+/* ---------- Required field marker ---------- */
+.required::after {
+    content: " *";
+    color: var(--color-error);
+}

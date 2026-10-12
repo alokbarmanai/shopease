@@ -18,13 +18,15 @@
 
             <form id="login-form" novalidate>
                 <label>
-                    Username
-                    <input type="text" name="username" autocomplete="username" data-testid="username-input">
+                    <span class="required">Username</span>
+                    <input type="text" name="username" autocomplete="username" aria-required="true"
+                        data-testid="username-input">
                 </label>
 
                 <label>
-                    Password
-                    <input type="password" name="password" autocomplete="current-password" data-testid="password-input">
+                    <span class="required">Password</span>
+                    <input type="password" name="password" autocomplete="current-password" aria-required="true"
+                        data-testid="password-input">
                 </label>
 
                 <button type="submit" data-testid="login-button">Login</button>
