@@ -21,6 +21,7 @@ app.get('/api/health', (req, res) => {
 // NEW: API routes
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/products', require('./routes/products'));
+app.use('/api/cart', require('./routes/cart'));
 
 // NEW: Error handler – turns any error into { "error": "..." } (ARCHITECTURE.md §3).
 // Must be registered AFTER all routes.
