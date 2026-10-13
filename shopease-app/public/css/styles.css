@@ -305,3 +305,28 @@ td {
         grid-template-columns: 1fr;
     }
 }
+
+/* ---------- Confirmation page ---------- */
+.confirmation {
+    max-width: 480px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.confirmation .summary {
+    text-align: left;
+}
+
+.confirmation .order-id {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 0;
+}
+
+.actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 16px;
+}

@@ -57,3 +57,9 @@ async function api(method, path, body) {
 function formatMoney(cents) {
     return `$${(cents / 100).toFixed(2)}`;
 }
+
+// Shows a server timestamp (UTC) in the user's local time,
+// e.g. "2026-10-12T03:47:04Z" -> "Oct 11, 2026, 10:47 PM" (in US Central time)
+function formatDate(isoString) {
+    return new Date(isoString).toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' });
+}
