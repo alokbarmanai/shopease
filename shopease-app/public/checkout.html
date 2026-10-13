@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout – ShopEase</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <header id="app-header"></header>
+
+    <main>
+        <h1>Checkout</h1>
+
+        <div class="message" role="status" data-testid="page-message" hidden></div>
+
+        <!-- BR-05: no checkout with an empty cart -->
+        <div data-testid="checkout-empty" hidden>
+            <p class="muted">Your cart is empty. Add products before checking out.</p>
+            <a href="/products.html" class="button" data-testid="continue-shopping">Continue shopping</a>
+        </div>
+
+        <div class="checkout-layout" data-testid="checkout-content" hidden>
+            <form id="checkout-form" class="card" novalidate>
+                <h2>Shipping Details</h2>
+
+                <label>
+                    <span class="required">Full Name</span>
+                    <input type="text" name="fullName" autocomplete="name" aria-required="true"
+                        data-testid="fullname-input">
+                </label>
+
+                <label>
+                    <span class="required">Address</span>
+                    <input type="text" name="address" autocomplete="street-address" aria-required="true"
+                        data-testid="address-input">
+                </label>
+
+                <div class="form-row">
+                    <label>
+                        <span class="required">City</span>
+                        <input type="text" name="city" autocomplete="address-level2" aria-required="true"
+                            data-testid="city-input">
+                    </label>
+                    <label>
+                        <span class="required">ZIP Code</span>
+                        <input type="text" name="zipCode" inputmode="numeric" autocomplete="postal-code"
+                            aria-required="true" data-testid="zip-input">
+                    </label>
+                </div>
+
+                <label>
+                    <span class="required">Phone</span>
+                    <input type="tel" name="phone" inputmode="numeric" autocomplete="tel" aria-required="true"
+                        data-testid="phone-input">
+                </label>
+
+                <p class="muted">Payment method: Cash on Delivery</p>
+
+                <button type="submit" data-testid="place-order-button">Place Order</button>
+            </form>
+
+            <aside class="card">
+                <h2>Order Summary</h2>
+                <ul class="summary-items" data-testid="summary-items"></ul>
+
+                <dl class="summary">
+                    <dt>Subtotal</dt>
+                    <dd data-testid="summary-subtotal"></dd>
+                    <dt>Discount</dt>
+                    <dd data-testid="summary-discount"></dd>
+                    <dt>Shipping</dt>
+                    <dd data-testid="summary-shipping"></dd>
+                    <dt class="total">Total</dt>
+                    <dd class="total" data-testid="summary-total"></dd>
+                </dl>
+
+                <a href="/cart.html" data-testid="back-to-cart">← Back to cart</a>
+            </aside>
+        </div>
+    </main>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/layout.js"></script>
+    <script src="/js/checkout.js"></script>
+</body>
+
+</html>

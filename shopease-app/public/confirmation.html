@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmed – ShopEase</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <header id="app-header"></header>
+
+    <main>
+        <!-- Shown when the order is found -->
+        <div class="card confirmation" data-testid="confirmation-content" hidden>
+            <h1>Thank you for your order!</h1>
+            <p class="muted">Your order has been placed. Payment: Cash on Delivery.</p>
+
+            <p>Order ID</p>
+            <p class="order-id" data-testid="order-id"></p>
+
+            <dl class="summary">
+                <dt>Date</dt>
+                <dd data-testid="order-date"></dd>
+                <dt>Items</dt>
+                <dd data-testid="order-item-count"></dd>
+                <dt class="total">Total</dt>
+                <dd class="total" data-testid="order-total"></dd>
+            </dl>
+
+            <div class="actions">
+                <a href="/products.html" class="button" data-testid="continue-shopping">Continue shopping</a>
+                <a href="/orders.html" data-testid="view-orders-link">View my orders</a>
+            </div>
+        </div>
+
+        <!-- Shown when the order ID is unknown or belongs to someone else -->
+        <div class="card confirmation" data-testid="confirmation-not-found" hidden>
+            <h1>Order not found</h1>
+            <p class="muted">We couldn't find this order in your account.</p>
+            <a href="/orders.html" class="button">View my orders</a>
+        </div>
+    </main>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/layout.js"></script>
+    <script src="/js/confirmation.js"></script>
+</body>
+
+</html>

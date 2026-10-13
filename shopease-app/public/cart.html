@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart – ShopEase</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <header id="app-header"></header>
+
+    <main>
+        <h1>Your Cart</h1>
+
+        <div class="message" role="status" data-testid="page-message" hidden></div>
+
+        <!-- Shown when the cart has no items -->
+        <div data-testid="cart-empty" hidden>
+            <p class="muted">Your cart is empty.</p>
+            <a href="/products.html" class="button" data-testid="continue-shopping">Continue shopping</a>
+        </div>
+
+        <!-- Shown when the cart has items -->
+        <div class="cart-layout" data-testid="cart-content" hidden>
+            <table data-testid="cart-table">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th class="text-right">Total</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody data-testid="cart-items"></tbody>
+            </table>
+
+            <aside class="card cart-summary">
+                <h2>Order Summary</h2>
+
+                <!-- Coupon: either this form... -->
+                <form id="coupon-form" novalidate>
+                    <label for="coupon-code">Coupon code</label>
+                    <div class="inline">
+                        <input type="text" id="coupon-code" name="code" data-testid="coupon-input">
+                        <button type="submit" data-testid="apply-coupon-button">Apply</button>
+                    </div>
+                </form>
+
+                <!-- ...or this line, once a coupon is applied (RULE-04) -->
+                <p data-testid="applied-coupon-box" hidden>
+                    Coupon <strong data-testid="applied-coupon"></strong> applied
+                    <button type="button" class="link-button" data-testid="remove-coupon-button">Remove</button>
+                </p>
+
+                <dl class="summary">
+                    <dt>Subtotal</dt>
+                    <dd data-testid="summary-subtotal"></dd>
+                    <dt>Discount</dt>
+                    <dd data-testid="summary-discount"></dd>
+                    <dt>Shipping</dt>
+                    <dd data-testid="summary-shipping"></dd>
+                    <dt class="total">Total</dt>
+                    <dd class="total" data-testid="summary-total"></dd>
+                </dl>
+
+                <a href="/checkout.html" class="button full-width" data-testid="checkout-button">
+                    Proceed to Checkout
+                </a>
+            </aside>
+        </div>
+    </main>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/layout.js"></script>
+    <script src="/js/cart.js"></script>
+</body>
+
+</html>

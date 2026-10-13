@@ -1,0 +1,372 @@
+/* ShopEase – shared styles for all pages */
+
+:root {
+    --color-primary: #2563eb;
+    --color-primary-dark: #1d4ed8;
+    --color-text: #1f2937;
+    --color-muted: #6b7280;
+    --color-border: #e5e7eb;
+    --color-bg: #f9fafb;
+    --color-error: #b91c1c;
+    --color-error-bg: #fee2e2;
+    --color-success: #15803d;
+    --color-success-bg: #dcfce7;
+    --radius: 8px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: var(--color-text);
+    background: var(--color-bg);
+}
+
+[hidden] {
+    display: none !important;
+}
+
+/* ---------- Header ---------- */
+#app-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px;
+    background: #fff;
+    border-bottom: 1px solid var(--color-border);
+}
+
+#app-header .logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+#app-header nav {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+#app-header nav a {
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+#app-header .user {
+    color: var(--color-muted);
+}
+
+.badge {
+    display: inline-block;
+    min-width: 22px;
+    padding: 2px 6px;
+    border-radius: 999px;
+    background: var(--color-primary);
+    color: #fff;
+    font-size: 0.75rem;
+    text-align: center;
+}
+
+/* ---------- Page layout ---------- */
+main {
+    max-width: 960px;
+    margin: 24px auto;
+    padding: 0 16px;
+}
+
+h1 {
+    margin-top: 0;
+}
+
+.card {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 16px;
+}
+
+.muted {
+    color: var(--color-muted);
+}
+
+.text-right {
+    text-align: right;
+}
+
+/* ---------- Forms ---------- */
+label {
+    display: block;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+input,
+select {
+    display: block;
+    width: 100%;
+    margin-top: 4px;
+    padding: 8px 10px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    font: inherit;
+}
+
+/* ---------- Buttons ---------- */
+button,
+.button {
+    display: inline-block;
+    padding: 8px 16px;
+    border: none;
+    border-radius: var(--radius);
+    background: var(--color-primary);
+    color: #fff;
+    font: inherit;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+button:hover,
+.button:hover {
+    background: var(--color-primary-dark);
+}
+
+button:disabled {
+    background: var(--color-border);
+    color: var(--color-muted);
+    cursor: not-allowed;
+}
+
+.link-button {
+    background: none;
+    color: var(--color-primary);
+    padding: 0;
+}
+
+.link-button:hover {
+    background: none;
+    text-decoration: underline;
+}
+
+/* ---------- Messages ---------- */
+.message {
+    padding: 10px 12px;
+    border-radius: var(--radius);
+    margin-bottom: 16px;
+}
+
+.message.error {
+    background: var(--color-error-bg);
+    color: var(--color-error);
+}
+
+.message.success {
+    background: var(--color-success-bg);
+    color: var(--color-success);
+}
+
+/* ---------- Tables ---------- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+}
+
+th,
+td {
+    padding: 10px;
+    border-bottom: 1px solid var(--color-border);
+    text-align: left;
+}
+
+/* ---------- Products ---------- */
+.toolbar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.toolbar input,
+.toolbar select {
+    margin-top: 0;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+}
+
+
+/* ---------- Login page ---------- */
+.login-page {
+    max-width: 380px;
+    margin-top: 80px;
+}
+
+.login-page button[type="submit"] {
+    width: 100%;
+    margin-top: 8px;
+}
+
+/* ---------- Products page ---------- */
+.toolbar input {
+    flex: 1;
+}
+
+.toolbar select {
+    width: 200px;
+}
+
+.product-card h3 {
+    margin: 0 0 4px;
+}
+
+.product-card .price {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.out-of-stock {
+    color: var(--color-error);
+    font-weight: 600;
+}
+
+/* ---------- Required field marker ---------- */
+.required::after {
+    content: " *";
+    color: var(--color-error);
+}
+
+
+/* ---------- Cart page ---------- */
+.cart-layout {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 24px;
+    align-items: start;
+}
+
+.cart-layout table input {
+    width: 70px;
+    margin-top: 0;
+}
+
+.cart-summary h2 {
+    margin-top: 0;
+    font-size: 1.1rem;
+}
+
+.inline {
+    display: flex;
+    gap: 8px;
+}
+
+.inline input {
+    margin-top: 0;
+}
+
+.summary {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+    margin: 16px 0;
+}
+
+.summary dt,
+.summary dd {
+    margin: 0;
+}
+
+.summary dd {
+    text-align: right;
+}
+
+.summary .total {
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding-top: 8px;
+    border-top: 1px solid var(--color-border);
+}
+
+.full-width {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+/* On narrow screens, put the summary below the table */
+@media (max-width: 720px) {
+    .cart-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---------- Confirmation page ---------- */
+.confirmation {
+    max-width: 480px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.confirmation .summary {
+    text-align: left;
+}
+
+.confirmation .order-id {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 0;
+}
+
+.actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 16px;
+}
+
+/* ---------- Checkout page ---------- */
+.checkout-layout {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 24px;
+    align-items: start;
+}
+
+.checkout-layout h2 {
+    margin-top: 0;
+    font-size: 1.1rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.summary-items {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 12px;
+}
+
+.summary-items li {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 4px 0;
+}
+
+@media (max-width: 720px) {
+
+    .checkout-layout,
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
