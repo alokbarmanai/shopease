@@ -61,3 +61,18 @@ function showMessage(type, text) {
 function hideMessage() {
     document.querySelector('[data-testid="page-message"]').hidden = true;
 }
+
+// Sets the text of the element with the given data-testid.
+function setText(testId, text) {
+    document.querySelector(`[data-testid="${testId}"]`).textContent = text;
+}
+
+// Order totals block used on the cart and checkout pages (RULE-06 to RULE-09).
+function renderTotals(cart) {
+    setText('summary-subtotal', formatMoney(cart.subtotalCents));
+    setText('summary-discount',
+        cart.discountCents > 0 ? `-${formatMoney(cart.discountCents)}` : formatMoney(0));
+    setText('summary-shipping',
+        cart.shippingCents === 0 ? 'FREE' : formatMoney(cart.shippingCents));
+    setText('summary-total', formatMoney(cart.totalCents));
+}
