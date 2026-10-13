@@ -33,11 +33,17 @@ async function api(method, path, body) {
         headers.Authorization = `Bearer ${auth.token()}`;
     }
 
-    const response = await fetch(`/api${path}`, {
-        method,
-        headers,
-        body: body === undefined ? undefined : JSON.stringify(body),
-    });
+    let response;
+    try {
+        response = await fetch(`/api${path}`, {
+            method,
+            headers,
+            body: body === undefined ? undefined : JSON.stringify(body),
+        });
+    } catch {
+        // Network failure: the server could not be reached at all.
+        throw new Error('Cannot reach the server. Please try again later.');
+    }
     const data = await response.json().catch(() => ({}));
 
     // Session expired (e.g. server restarted): go back to the login page.
