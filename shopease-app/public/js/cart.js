@@ -33,13 +33,7 @@ function renderCart(cart) {
     document.querySelector('[data-testid="applied-coupon-box"]').hidden = !hasCoupon;
     setText('applied-coupon', cart.couponCode ?? '');
 
-    // Summary (RULE-06 to RULE-09).
-    setText('summary-subtotal', formatMoney(cart.subtotalCents));
-    setText('summary-discount',
-        cart.discountCents > 0 ? `-${formatMoney(cart.discountCents)}` : formatMoney(0));
-    setText('summary-shipping',
-        cart.shippingCents === 0 ? 'FREE' : formatMoney(cart.shippingCents));
-    setText('summary-total', formatMoney(cart.totalCents));
+    renderTotals(cart);
 }
 
 function createCartRow(item) {
@@ -103,6 +97,3 @@ function removeCoupon() {
     updateCart(() => api('DELETE', '/cart/coupon'), 'Coupon removed');
 }
 
-function setText(testId, text) {
-    document.querySelector(`[data-testid="${testId}"]`).textContent = text;
-}
