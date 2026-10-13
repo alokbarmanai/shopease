@@ -330,3 +330,43 @@ td {
     align-items: center;
     margin-top: 16px;
 }
+
+/* ---------- Checkout page ---------- */
+.checkout-layout {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 24px;
+    align-items: start;
+}
+
+.checkout-layout h2 {
+    margin-top: 0;
+    font-size: 1.1rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.summary-items {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 12px;
+}
+
+.summary-items li {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 4px 0;
+}
+
+@media (max-width: 720px) {
+
+    .checkout-layout,
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
