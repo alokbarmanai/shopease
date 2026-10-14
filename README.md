@@ -32,6 +32,9 @@ More details: [Development Guide](docs/DEVELOPMENT.md)
 | API | Playwright | `shopease-tests/tests/api` | 63 |
 | UI / E2E | Playwright | `shopease-tests/tests/ui` | 32 |
 
+Run everything locally from the repository root: `npm run setup` (once), then `npm test`.
+See [Running Tests Locally](docs/DEVELOPMENT.md#8-running-tests-locally).
+
 Every Pull Request runs all layers in GitHub Actions; `main` is protected by required checks.
 Strategy: [Test Plan](docs/TEST-PLAN.md) · Suite guide: [shopease-tests/README.md](shopease-tests/README.md)
 

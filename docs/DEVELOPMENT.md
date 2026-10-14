@@ -98,3 +98,38 @@ Invoke-RestMethod -Method Post http://localhost:3000/api/test/reset
 | Terminal: `SyntaxError` / `Cannot find module`      | Error in a `src/` file                  | Read the file and line shown in the error             |
 | Suddenly back on the login page                     | Server restarted or test data was reset | Log in again (expected)                               |
 | UI change not visible                               | Browser cache                           | Hard refresh: `Ctrl+F5`                               |
+
+
+## 8. Running Tests Locally
+
+All commands run from the **repository root**. They call the scripts defined in
+`shopease-app/package.json` and `shopease-tests/package.json`.
+
+### First-time setup
+
+```bash
+npm run setup
+```
+
+Installs the app and the automation suite, and downloads the Chromium browser.
+
+### Commands
+
+| Command | Runs |
+|---------|------|
+| `npm test` | Unit tests, then API + UI tests (stops early if unit tests fail) |
+| `npm run test:unit` | Unit tests (`shopease-app/test/unit`) |
+| `npm run test:e2e` | API + UI tests (`shopease-tests`) |
+| `npm run test:api` | API tests only |
+| `npm run test:ui` | UI tests only (Chromium) |
+| `npm run test:smoke` | Tests tagged `@smoke` |
+| `npm run test:headed` | UI tests in a visible browser |
+| `npm run typecheck` | TypeScript check of the automation suite |
+| `npm run report` | Open the last Playwright HTML report |
+
+### Notes
+- The automation suite starts the app by itself. If the app is already running
+  (`npm run dev`), it is reused – and its data is reset by the tests.
+- Run one spec file: `cd shopease-tests` → `npx playwright test tests/ui/journey.spec.ts --project=chromium`
+- Debug a failure: `npx playwright show-trace <path-to-trace.zip>` (see `shopease-tests/README.md`).
+- The same tests run in CI on every Pull Request (`.github/workflows/ci.yml`).
