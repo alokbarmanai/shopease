@@ -1,0 +1,25 @@
+{
+  "name": "shopease-tests",
+  "version": "1.0.0",
+  "description": "Playwright + TypeScript automation suite for ShopEase (API and UI tests)",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "test": "playwright test --project=api --project=chromium",
+    "test:api": "playwright test --project=api",
+    "test:ui": "playwright test --project=chromium",
+    "test:smoke": "playwright test --project=api --project=chromium --grep @smoke",
+    "test:headed": "playwright test --project=chromium --headed",
+    "test:all-browsers": "playwright test",
+    "typecheck": "tsc --noEmit",
+    "report": "playwright show-report"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.0",
+    "@types/node": "^26.6.5",
+    "typescript": "^7.0.2"
+  }
+}
