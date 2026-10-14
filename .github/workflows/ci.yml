@@ -1,4 +1,4 @@
-# Continuous Integration: runs the tests on every Pull Request
+# Continuous Integration: runs every test layer on each Pull Request
 # and on every push to main.
 name: CI
 
@@ -32,3 +32,48 @@ jobs:
 
       - name: Run unit tests
         run: npm test
+
+  e2e-tests:
+    name: API & UI tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            shopease-app/package-lock.json
+            shopease-tests/package-lock.json
+
+      - name: Install app dependencies
+        working-directory: shopease-app
+        run: npm ci
+
+      - name: Install test dependencies
+        working-directory: shopease-tests
+        run: npm ci
+
+      - name: Install Chromium
+        working-directory: shopease-tests
+        run: npx playwright install --with-deps chromium
+
+      - name: Type-check the test suite
+        working-directory: shopease-tests
+        run: npm run typecheck
+
+      - name: Run API and UI tests
+        working-directory: shopease-tests
+        run: npm test
+
+      - name: Upload Playwright report
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: shopease-tests/playwright-report/
+          retention-days: 14
