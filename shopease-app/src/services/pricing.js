@@ -1,7 +1,7 @@
 // Pricing rules from BRD §7 (RULE-06 to RULE-08).
 // All amounts are in cents.
 
-const FREE_SHIPPING_THRESHOLD_CENTS = 5000; // RULE-07: $50.00
+const FREE_SHIPPING_THRESHOLD_CENTS = 6000; // RULE-07: $50.00
 const SHIPPING_FEE_CENTS = 500;             // RULE-07: $5.00
 
 function calculateSubtotal(items) {
