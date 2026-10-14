@@ -1,9 +1,12 @@
 import { test as base, expect } from '@playwright/test';
 import { ShopEaseApi } from '../api/ShopEaseApi';
+import { USERS } from '../test-data/users';
 
 type Fixtures = {
     resetData: void;
     api: ShopEaseApi;
+    aliceApi: ShopEaseApi;
+    bobApi: ShopEaseApi;
 };
 
 // Our own `test`: Playwright's test plus ShopEase fixtures.
@@ -18,9 +21,24 @@ export const test = base.extend<Fixtures>({
         { auto: true },
     ],
 
-    // A ShopEase API client for the test to use.
-    api: async ({ request }, use) => {
+    // A ShopEase API client, not logged in.
+    // Depends on resetData so it is always created AFTER the reset.
+    api: async ({ request, resetData }, use) => {
         await use(new ShopEaseApi(request));
+    },
+
+    // An API client already logged in as alice.
+    aliceApi: async ({ request, resetData }, use) => {
+        const client = new ShopEaseApi(request);
+        await client.loginAs(USERS.alice);
+        await use(client);
+    },
+
+    // A second customer, for isolation and multi-user tests.
+    bobApi: async ({ request, resetData }, use) => {
+        const client = new ShopEaseApi(request);
+        await client.loginAs(USERS.bob);
+        await use(client);
     },
 });
 
