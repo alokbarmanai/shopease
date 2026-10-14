@@ -1,0 +1,19 @@
+{
+    "name": "shopease",
+    "version": "1.0.0",
+    "private": true,
+    "description": "ShopEase monorepo: app, unit tests and Playwright automation suite",
+    "scripts": {
+        "setup": "cd shopease-app && npm install && cd ../shopease-tests && npm install && npx playwright install chromium",
+        "dev": "npm run dev --prefix shopease-app",
+        "test": "npm run test:unit && npm run test:e2e",
+        "test:unit": "npm test --prefix shopease-app",
+        "test:e2e": "npm test --prefix shopease-tests",
+        "test:api": "npm run test:api --prefix shopease-tests",
+        "test:ui": "npm run test:ui --prefix shopease-tests",
+        "test:smoke": "npm run test:smoke --prefix shopease-tests",
+        "test:headed": "npm run test:headed --prefix shopease-tests",
+        "typecheck": "npm run typecheck --prefix shopease-tests",
+        "report": "npm run report --prefix shopease-tests"
+    }
+}
